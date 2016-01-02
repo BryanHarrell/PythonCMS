@@ -6,7 +6,10 @@ from tinymce.models import HTMLField
 from django.template.defaultfilters import slugify
 
 #... Need blog post
+class Blog(models.Model):
+    blog_title = "Bryan's Blog"
 
+blog_title = "Bryan's Blog"
 class Post(models.Model):
     title = models.CharField(max_length=200)
     content = HTMLField()
