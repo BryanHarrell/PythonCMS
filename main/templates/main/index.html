@@ -1,7 +1,7 @@
 {% load staticfiles %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'main/bootstrap/css/bootstrap.css' %}" />
-
+<link rel="stylesheet" type="text/css" href="{% static 'main/bootstrap/css/bootstrap.min.css' %}" />
+<script src="{% static 'main/bootstrap/js/bootstrap.min.js' %}"></script>
 
 
 
@@ -18,18 +18,9 @@
 
     <title>Jumbotron Template for Bootstrap</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -85,7 +76,7 @@
         <div class="col-md-4">
           <h2>{{post.title}}</h2>
           <p>{{post.content|safe}} </p>
-          <p><a class="btn btn-default" href="/main/{{post.id}}"role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="/{{post.slug}}"role="button">View details &raquo;</a></p>
         </div>
       
             {% endfor %}

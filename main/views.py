@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.template import loader
+from django.shortcuts import get_object_or_404, render
 
 from .models import Post
 
@@ -12,5 +13,6 @@ def index(request):
     }
     return HttpResponse(template.render(context, request))
 
-def detail(request, post_id):
-    return HttpResponse("You're looking at post %s." % post_id)
+def detail(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    return render(request, 'main/detail.html', {'post': post})

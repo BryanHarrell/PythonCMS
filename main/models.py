@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone   
 from django.utils.encoding import python_2_unicode_compatible
 from tinymce.models import HTMLField
+from django.template.defaultfilters import slugify
 
 #... Need blog post
 
@@ -11,6 +12,12 @@ class Post(models.Model):
     content = HTMLField()
     pub_date = models.DateTimeField('date published')
     author = models.CharField(max_length=200)
+    slug = models.SlugField(('slug'), max_length=60, blank=True)
+    def save(self, *args, **kwargs):
+        if not self.id:
+            #Only set the slug when the object is created.
+            self.slug = slugify(self.title) #Or whatever you want the slug to use
+        super(Post, self).save(*args, **kwargs)
     def __str__(self):
         return self.title
     '''

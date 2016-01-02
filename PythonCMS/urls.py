@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^main/', include('main.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', include('main.urls')),
-    url(r'^(?P<post_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^(?P<slug>[-\w]+)/$' ,views.detail, name='detail'),
+    url(r'^tinymce/', include('tinymce.urls')),
 ]
