@@ -38,7 +38,6 @@ pytz==2013.7
 queuelib==1.2.2
 requests==2.5.1
 rsa==3.1.4
-scipy==0.13.0b1
 Scrapy==0.24.4
 six==1.4.1
 snowballstemmer==1.2.1
