@@ -17,10 +17,14 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from main import views
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
+    url(r'^list/$', views.list, name='list'),
     url(r'^main/', include('main.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', include('main.urls')),
-    url(r'^(?P<slug>[-\w]+)/$' ,views.detail, name='detail'),
+    url(r'^(?P<slug>[-\w]+)/$', views.detail, name='detail'),
     url(r'^tinymce/', include('tinymce.urls')),
-]
+    url(r'^list/$', views.list, name='list'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

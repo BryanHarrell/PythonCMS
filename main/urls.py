@@ -3,6 +3,9 @@ from django.contrib import admin
 from . import views
 app_name = 'main'
 urlpatterns = [
+    url(r'^list/$', views.list, name='list'),
     url(r'^$', views.index, name='index'),
     url(r'^(?P<slug>[-\w]+)/$' ,views.detail, name='detail'),
-]
+    
+
+] 
