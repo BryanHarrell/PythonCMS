@@ -6,12 +6,15 @@ from tinymce.models import HTMLField
 from django.template.defaultfilters import slugify
 from ckeditor.fields import RichTextField
 #... Need blog post
+
+
 class Blog(models.Model):
-    blog_title = "Bryan's Blog"
+    title = models.CharField(max_length=200)
+    def __str__(self):
+        return self.title
 
-
-class Document(models.Model):
-    docfile = models.FileField(upload_to='documents/%Y/%m/%d')
+class Image(models.Model):
+    docfile = models.FileField(upload_to='images/%Y/%m/%d')
     title = models.CharField(max_length=200)
     def __str__(self):
         return self.title
@@ -19,6 +22,7 @@ class Document(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=200)
     content = RichTextField()
+    meta = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     author = models.CharField(max_length=200)
     slug = models.SlugField(('slug'), max_length=60, blank=True)

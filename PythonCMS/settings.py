@@ -51,7 +51,10 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
 ]
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 ROOT_URLCONF = 'PythonCMS.urls'
 
@@ -84,18 +87,18 @@ WSGI_APPLICATION = 'PythonCMS.wsgi.application'
     #}
 #}
 import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+#DATABASES['default'] =  dj_database_url.config()
 
-#DATABASES = {
- #   'default': {
-  #      'ENGINE': 'django.db.backends.postgresql_psycopg2',
-   #     'NAME': 'PythonCMS',
-    #    'USER': 'bryan',
-     #   'PASSWORD': 'diablos3',
-      #  'HOST': '',
-       # 'PORT': '',
-    #}
-#}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'PythonCMS',
+        'USER': 'bryan',
+        'PASSWORD': 'diablos3',
+        'HOST': '',
+        'PORT': '',
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
